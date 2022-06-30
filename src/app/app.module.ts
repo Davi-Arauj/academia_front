@@ -36,10 +36,10 @@ import { ProductRead2Component } from './components/product/product-read2/produc
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
-import { SaleCreateComponent } from './components/sale/sale-create/sale-create.component';
-import { SaleCrudComponent } from './views/sale-crud/sale-crud.component';
-import { SaleReadComponent } from './components/sale/sale-read/sale-read.component';
 import localePt from '@angular/common/locales/pt';
+import { AlunoCreateComponent } from 'src/app/components/aluno/aluno-create/aluno-create.component';
+import { AlunoCrudComponent } from './views/aluno-crud/aluno-crud.component';
+import { VendaCrudComponent } from './views/venda-crud/venda-crud.component';
 
 registerLocaleData(localePt);
 
@@ -59,9 +59,9 @@ registerLocaleData(localePt);
     ProductRead2Component,
     ProductUpdateComponent,
     ProductDeleteComponent,
-    SaleCreateComponent,
-    SaleCrudComponent,
-    SaleReadComponent
+    AlunoCreateComponent,
+    AlunoCrudComponent,
+    VendaCrudComponent
 
 
 

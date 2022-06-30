@@ -9,9 +9,16 @@ import { Product } from '../product.model';
 })
 export class ProductCreateComponent implements OnInit {
   newProduct: Product = {
-    amount: undefined,
-    description: "",
-    price: undefined
+    codigo_barras: 123,
+    nome: "Davi",
+    descricao: "Davi",
+    foto: "antoniooo",
+    valorpago: 123,
+    valorvenda: 123,
+    qtde: 123,
+    und_cod: 123,
+    cat_cod:123,
+    scat_cod:123
   }
   constructor(private productService: ProductService) { }
 

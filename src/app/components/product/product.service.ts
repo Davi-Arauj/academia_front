@@ -12,11 +12,14 @@ import { map, catchError } from "rxjs/operators";
 })
 export class ProductService {
 
-  baseUrl = "https://meuboteco.herokuapp.com/api/v1/product";
+  baseUrl = "api/v1/products";
   constructor(private snackBar: MatSnackBar,
     private http: HttpClient,
     private router: Router
   ) { }
+
+  page_id : number = 1
+  page_size : number = 10
 
 
   showMessage(msg: string, isError: boolean = false): void {
@@ -35,8 +38,9 @@ export class ProductService {
     );
   }
 
-  read(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl).pipe(
+  read(): Observable<Product[]> { 
+    const url = `${this.baseUrl}?page_id=${this.page_id}&page_size=${this.page_size}`
+    return this.http.get<Product[]>(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );

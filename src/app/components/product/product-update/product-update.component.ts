@@ -10,9 +10,16 @@ import { Product } from '../product.model';
 })
 export class ProductUpdateComponent implements OnInit {
   newProduct: Product = {
-    amount: undefined,
-    description: "",
-    price: undefined
+    codigo_barras: undefined,
+    nome: "",
+    descricao: "",
+    foto: "",
+    valorpago: undefined,
+    valorvenda: undefined,
+    qtde: undefined,
+    und_cod: undefined,
+    cat_cod:undefined,
+    scat_cod:undefined
   }
   constructor(
     private productService: ProductService,
@@ -30,12 +37,12 @@ export class ProductUpdateComponent implements OnInit {
   updateProduct(): void { 
       this.productService.update(this.newProduct).subscribe(() =>{
       this.productService.showMessage("Produto atualizado com Sucesso!")
-      this.router.navigate(['/products'])
+      this.router.navigate(['/produtos'])
 
     })
   }
   cancel(): void {
-    this.router.navigate(['/products'])
+    this.router.navigate(['/produtos'])
   }
 
 
