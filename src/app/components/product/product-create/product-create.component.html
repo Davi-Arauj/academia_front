@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-title>Novo Produto</mat-card-title>
-    <form>
+    <form method="post" #frm="ngForm" (ngSubmit)="createdProduct(frm)">
         <mat-form-field>
             <input matInput placeholder="Nome" [(ngModel)]="newProduct.nome" name="nome">
         </mat-form-field>
@@ -11,7 +11,7 @@
             <input matInput placeholder="Foto" [(ngModel)]="newProduct.foto" name="foto">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Codigo_Barras" [(ngModel)]="newProduct.codigo_barras" name="codigo_barras">
+            <input matInput placeholder="Codigo_Barras" type="number" [(ngModel)]="newProduct.codigo_barras" name="codigo_barras">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Valor_Pago" [(ngModel)]="newProduct.valorpago" name="valorpago">
@@ -32,7 +32,7 @@
             <input matInput placeholder="SubCategoria" [(ngModel)]="newProduct.scat_cod" name="scat_cod">
         </mat-form-field>
     </form>
-    <button mat-raised-button (click)="createdProduct()" color="primary">
+    <button mat-raised-button color="primary">
         Salvar
     </button>
     <button mat-raised-button (click)="cancel()">

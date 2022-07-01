@@ -2,7 +2,7 @@ export interface Product{
     id?: number
     codigo_barras?: number
     nome?: string
-    descricao: string
+    descricao?: string
     foto?: string
     valorpago?: number
     valorvenda?: number
