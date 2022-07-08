@@ -8,28 +8,28 @@
             <input matInput placeholder="Descrição" [(ngModel)]="newProduct.descricao" name="descricao">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Foto" [(ngModel)]="newProduct.foto" name="foto">
+            <input matInput placeholder="Foto" [(ngModel)]="newProduct.endereco_foto" name="endereco_foto">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Codigo_Barras" [(ngModel)]="newProduct.codigo_barras" name="codigo_barras">
+            <input matInput placeholder="Codigo_Barras"  [(ngModel)]="newProduct.codigo_barras" name="codigo_barras">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Valor_Pago" [(ngModel)]="newProduct.valorpago" name="valorpago">
+            <input matInput placeholder="Valor_Pago"  [(ngModel)]="newProduct.valor_pago" name="valor_pago">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Preço (R$)" [(ngModel)]="newProduct.valorvenda" name="valorvenda">
+            <input matInput placeholder="Preço (R$)"  [(ngModel)]="newProduct.valor_venda" name="valor_venda">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Qtde" [(ngModel)]="newProduct.qtde" name="qtde">
+            <input matInput placeholder="Qtde"  [(ngModel)]="newProduct.quantidade" name="quantidade">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Unidade" [(ngModel)]="newProduct.und_cod" name="und_cod">
+            <input matInput placeholder="Unidade"  [(ngModel)]="newProduct.unidade_id" name="unidade_id">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Categoria" [(ngModel)]="newProduct.cat_cod" name="cat_cod">
+            <input matInput placeholder="Categoria"  [(ngModel)]="newProduct.categoria_id" name="categoria_id">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="SubCategoria" [(ngModel)]="newProduct.scat_cod" name="scat_cod">
+            <input matInput placeholder="SubCategoria"   [(ngModel)]="newProduct.subcategoria_id" name="subcategoria_id">
         </mat-form-field>
     </form>
     <button mat-raised-button (click)="updateProduct()" id="buttonUpdate">
@@ -38,5 +38,4 @@
     <button mat-raised-button (click)="cancel()" color="warn">
         Cancelar
     </button>
-
 </mat-card>

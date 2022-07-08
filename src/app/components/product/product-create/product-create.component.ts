@@ -1,7 +1,6 @@
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-product-create',
@@ -10,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class ProductCreateComponent implements OnInit {
  
-  newProduct: any;
+  newProduct: Product = {};
 
   constructor(private productService: ProductService) {}
 
@@ -18,11 +17,10 @@ export class ProductCreateComponent implements OnInit {
     this.newProduct = {};
   }
 
-  createdProduct(frm: FormGroup): void {
+  createdProduct(): void {
     
      this.productService.create(this.newProduct).subscribe(() => {
       this.productService.showMessage("Produto criado com sucesso!")
-      frm.reset();
       this.productService.cancel()
 
     })

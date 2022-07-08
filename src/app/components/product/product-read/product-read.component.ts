@@ -1,25 +1,60 @@
+import { Product, Total } from './../product.model';
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../product.model';
 import { ProductService } from '../product.service';
-
+import { PageEvent } from '@angular/material/paginator';
+import { Page, PageRequest } from 'src/app/util/pagination';
 @Component({
   selector: 'app-product-read',
   templateUrl: './product-read.component.html',
-  styleUrls: ['./product-read.component.css']
+  styleUrls: ['./product-read.component.css'],
 })
 export class ProductReadComponent implements OnInit {
 
-  products: Product[] = new Array();
-  displayedColumns = ['codigo_barras', 'nome', 'qtde', 'valorvenda','action'];
+  displayedColumns = ['codigo_barras', 'nome', 'quantidade', 'valor_venda','action'];
   
+  page: Page<Product> = new Page([],0);
+  pageEvent: PageEvent;
+  total: number = 0;
+
   constructor(private productService: ProductService) { }
 
-  ngOnInit(): void {
-    this.productService.read().subscribe(products => {
-      this.products = products    
-      console.log(products) 
-    })
-
+  ngOnInit(): void { 
+    this.totalProdutos(),
+    this.listarProdutos();
   }
+
+  listarProdutos(){
+
+    let queryAdicional;
+    this.productService.read(
+      new PageRequest(
+        {
+          pageNumber: this.pageEvent? this.pageEvent.pageIndex:0,
+          pageSize: this.pageEvent? this.pageEvent.pageSize:5
+        },
+        queryAdicional
+      )
+      )
+      .subscribe(
+      (page: any) => {
+        this.page.content = page.content.dados ;
+        console.log(page.content)
+      },
+      (error) => {
+        this.page = new Page([],0);
+      }
+    )
+  }
+
+  totalProdutos(){
+    this.productService.total()
+    .subscribe(
+      (total :any) => {
+        this.total = total.total;
+        console.log(this.total)
+      }
+    )
+  }
+
 
 }

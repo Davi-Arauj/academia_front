@@ -3,13 +3,17 @@ export interface Product{
     codigo_barras?: number
     nome?: string
     descricao?: string
-    foto?: string
-    valorpago?: number
-    valorvenda?: number
-    qtde?: number
-    und_cod?: number
-    cat_cod?:number
-    scat_cod?:number
+    endereco_foto?: string
+    valor_pago?: number
+    valor_venda?: number
+    quantidade?: number
+    unidade_id?: number
+    categoria_id?: number
+    subcategoria_id?: number
     // data_criacao?: Date
     // data_atualizacao?: Date
+}
+
+export interface Total{
+    quantidade?: number
 }

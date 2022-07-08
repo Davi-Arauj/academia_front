@@ -2,25 +2,21 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
-import { Product } from './product.model';
+import { Product, Total } from './product.model';
 import { Observable, EMPTY } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
-
+import { Page, QueryBuilder } from 'src/app/util/pagination';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  baseUrl = "api/v1/products";
+  baseUrl = "v2/cadastros/produtos";
   constructor(private snackBar: MatSnackBar,
     private http: HttpClient,
     private router: Router
   ) { }
-
-  page_id : number = 1
-  page_size : number = 10
-
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, "X", {
@@ -38,10 +34,11 @@ export class ProductService {
     );
   }
 
-  read(): Observable<Product[]> { 
-    const url = `${this.baseUrl}?page_id=${this.page_id}&page_size=${this.page_size}`
-    return this.http.get<Product[]>(url).pipe(
-      map((obj) => obj),
+  read(queryBuilder: QueryBuilder): Observable<Page<Product>> { 
+    return this.http
+    .get<Product[]>(`${this.baseUrl}?${queryBuilder.buildQueryString()}`,{observe: 'response'})
+    .pipe(
+      map((response) => <Page<Product>>Page.fromResponse(response)),
       catchError((e) => this.errorHandler(e))
     );
   }
@@ -69,6 +66,16 @@ export class ProductService {
       catchError((e) => this.errorHandler(e))
     );
   }
+
+  total():Observable<Total>{
+    const url = `${this.baseUrl}/total`
+    
+    return this.http.get<Total>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
 
   cancel() {
     this.router.navigate(['/products'])

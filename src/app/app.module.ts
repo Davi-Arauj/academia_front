@@ -30,7 +30,6 @@ import { ProductDeleteComponent } from './components/product/product-delete/prod
 import { ProductCrudComponent } from './views/product-crud/product-crud.component';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
 import { ProductReadComponent } from './components/product/product-read/product-read.component';
-import { ProductRead2Component } from './components/product/product-read2/product-read2.component';
 //
 
 import { HttpClientModule } from '@angular/common/http'
@@ -43,9 +42,6 @@ import { VendaCrudComponent } from './views/venda-crud/venda-crud.component';
 
 registerLocaleData(localePt);
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,15 +52,11 @@ registerLocaleData(localePt);
     ProductCrudComponent,
     ProductCreateComponent,
     ProductReadComponent,
-    ProductRead2Component,
     ProductUpdateComponent,
     ProductDeleteComponent,
     AlunoCreateComponent,
     AlunoCrudComponent,
     VendaCrudComponent
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -86,15 +78,11 @@ registerLocaleData(localePt);
     MatPaginatorModule,
     MatSortModule,
     MatAutocompleteModule
-
-
-
   ],
   providers: [{
     provide: LOCALE_ID,
     useValue: 'pt-BR'
-
-  }
+  },
 
   ],
   bootstrap: [AppComponent]

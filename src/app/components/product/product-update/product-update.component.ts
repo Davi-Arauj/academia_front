@@ -13,13 +13,13 @@ export class ProductUpdateComponent implements OnInit {
     codigo_barras: undefined,
     nome: "",
     descricao: "",
-    foto: "",
-    valorpago: undefined,
-    valorvenda: undefined,
-    qtde: undefined,
-    und_cod: undefined,
-    cat_cod:undefined,
-    scat_cod:undefined
+    endereco_foto: "",
+    valor_pago: undefined,
+    valor_venda: undefined,
+    quantidade: undefined,
+    unidade_id: undefined,
+    categoria_id:undefined,
+    subcategoria_id:undefined
   }
   constructor(
     private productService: ProductService,
