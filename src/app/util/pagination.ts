@@ -10,24 +10,27 @@ export interface PageQuery {
 
 export interface QueryBuilder {
     pageQuery: PageQuery;
-   // sortQuery: SortQuery;
+    sortQuery: SortQuery;
     aditionalQuery: Map<string, string>;
     buildQueryMap(): Map<string, string>;
     buildQueryString(): string;
     buildPageQueryMap(): Map<string, string>;
- //   buildSortQueryMap(): Map<string, string>;
+    buildSortQueryMap(): Map<string, string>;
 }
 
 
 
 export class PageRequest implements QueryBuilder {
 
-    constructor(public pageQuery: PageQuery, public aditionalQuery: Map<string, string>) { }
-       
-
+    constructor(public pageQuery: PageQuery,
+                public sortQuery: SortQuery,
+                public aditionalQuery: Map<string, string>,
+                public offset: number
+                ) { }
+   
     buildQueryMap(): Map<string, string> {
 
-        let buildQueryMap = new Map<string, string>([...this.buildPageQueryMap()]);
+        let buildQueryMap = new Map<string, string>([...this.buildPageQueryMap(),...this.buildSortQueryMap()]);
 
         if (this.aditionalQuery) {
             buildQueryMap = new Map<string, string>([...buildQueryMap, ...this.aditionalQuery])
@@ -46,10 +49,21 @@ export class PageRequest implements QueryBuilder {
        
 
         let buildPageQueryMap = new Map<string, string>();
-        // this.pageQuery.pageNumber = this.pageQuery.pageNumber * this.pageQuery.pageSize
+        this.offset = (this.pageQuery.pageNumber * this.pageQuery.pageSize)
 
-        buildPageQueryMap.set("offset", `${(this.pageQuery.pageNumber)}`);
+        buildPageQueryMap.set("offset", `${(this.offset)}`);
         buildPageQueryMap.set("limit", `${this.pageQuery.pageSize}`);
+
+        return buildPageQueryMap;
+
+    }
+    
+    buildSortQueryMap(): Map<string, string> {
+
+        let buildPageQueryMap = new Map<string, string>();
+
+        buildPageQueryMap.set("order", `${this.sortQuery.property}`);
+        buildPageQueryMap.set("sort", `${this.sortQuery.direction}`);
 
         return buildPageQueryMap;
 
