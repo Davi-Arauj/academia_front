@@ -17,9 +17,8 @@ export class ProductCreateComponent implements OnInit {
     this.newProduct = {};
   }
 
-  createdProduct(): void {
-    
-     this.productService.create(this.newProduct).subscribe(() => {
+  createdProduct(): void {  
+      this.productService.create(this.newProduct).subscribe(() => {
       this.productService.showMessage("Produto criado com sucesso!")
       this.productService.cancel()
 

@@ -11,25 +11,22 @@
             <input matInput placeholder="Foto" [(ngModel)]="newProduct.endereco_foto" name="endereco_foto">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Codigo_Barras"  [(ngModel)]="newProduct.codigo_barras" name="codigo_barras">
+            <input matInput placeholder="Valor_Pago" type="number" [(ngModel)]="newProduct.valor_pago" name="valor_pago">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Valor_Pago"  [(ngModel)]="newProduct.valor_pago" name="valor_pago">
+            <input matInput placeholder="Preço (R$)" type="number" [(ngModel)]="newProduct.valor_venda" name="valor_venda">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Preço (R$)"  [(ngModel)]="newProduct.valor_venda" name="valor_venda">
+            <input matInput placeholder="Qtde" type="number" [(ngModel)]="newProduct.quantidade" name="quantidade">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Qtde"  [(ngModel)]="newProduct.quantidade" name="quantidade">
+            <input matInput placeholder="Unidade" type="number" [(ngModel)]="newProduct.unidade_id" name="unidade_id">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Unidade"  [(ngModel)]="newProduct.unidade_id" name="unidade_id">
+            <input matInput placeholder="Categoria" type="number" [(ngModel)]="newProduct.categoria_id" name="categoria_id">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Categoria"  [(ngModel)]="newProduct.categoria_id" name="categoria_id">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="SubCategoria"   [(ngModel)]="newProduct.subcategoria_id" name="subcategoria_id">
+            <input matInput placeholder="SubCategoria"  type="number" [(ngModel)]="newProduct.subcategoria_id" name="subcategoria_id">
         </mat-form-field>
     </form>
     <button mat-raised-button (click)="updateProduct()" id="buttonUpdate">

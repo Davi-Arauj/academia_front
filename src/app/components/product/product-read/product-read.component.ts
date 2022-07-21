@@ -46,7 +46,6 @@ export class ProductReadComponent implements OnInit {
       .subscribe(
       (page: any) => {
         this.page.content = page.content.dados ;
-        console.log(page.content)
       },
       (error) => {
         this.page = new Page([],0);
@@ -59,7 +58,6 @@ export class ProductReadComponent implements OnInit {
     .subscribe(
       (total :any) => {
         this.total = total.total;
-        console.log(this.total)
       }
     )
   }

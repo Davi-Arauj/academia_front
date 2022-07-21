@@ -13,6 +13,8 @@ import { Page, QueryBuilder } from 'src/app/util/pagination';
 export class ProductService {
 
   baseUrl = "v2/cadastros/produtos";
+  baseUrlID = "v2/cadastros/produto";
+  
   constructor(private snackBar: MatSnackBar,
     private http: HttpClient,
     private router: Router
@@ -43,24 +45,24 @@ export class ProductService {
     );
   }
 
-  readById(id: string): Observable<Product> {
-    const url = `${this.baseUrl}/${id}`
+  readById(codigo_barras: string): Observable<Product> {
+    const url = `${this.baseUrlID}/${codigo_barras}`
     return this.http.get<Product>(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
   }
 
-  update(product: Product): Observable<Product> {
-    const url = `${this.baseUrl}/${product.id}`
+  update(product: Product, codigo_barras: string): Observable<Product> {
+    const url = `${this.baseUrlID}/${codigo_barras}`
     return this.http.put<Product>(url, product).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
   }
 
-  delete(id: number): Observable<Product> {
-    const url = `${this.baseUrl}/${id}`
+  delete(codigo_barras: number): Observable<Product> {
+    const url = `${this.baseUrlID}/${codigo_barras}`
     return this.http.delete<Product>(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))

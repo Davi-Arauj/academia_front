@@ -23,11 +23,11 @@ const routes: Routes = [
     component: ProductCreateComponent
   },
   {
-    path: 'products/update/:id',
+    path: 'products/update/:codigo_barras',
     component: ProductUpdateComponent
   },
   {
-    path: 'products/delete/:id',
+    path: 'products/delete/:codigo_barras',
     component: ProductDeleteComponent
   },
   {
