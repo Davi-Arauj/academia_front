@@ -36,8 +36,10 @@ export class ProductReadComponent implements OnInit {
           pageSize: this.pageEvent? this.pageEvent.pageSize:5
         },
         {
-          property: this.sortEvent ? this.sortEvent.active : "id",
+          property: this.sortEvent ? this.sortEvent.active : "codigo_barras",
           direction: this.sortEvent ? this.sortEvent.direction : "asc",
+          sort:this.sortEvent ? this.sortEvent.direction : "asc",
+          order:true
         },
         queryAdicional,
         this.offset
