@@ -40,6 +40,7 @@ import localePt from '@angular/common/locales/pt';
 import { AlunoCreateComponent } from 'src/app/components/aluno/aluno-create/aluno-create.component';
 import { AlunoCrudComponent } from './views/aluno-crud/aluno-crud.component';
 import { VendaCrudComponent } from './views/venda-crud/venda-crud.component';
+import { AssinaturaComponent } from './src/app/components/assinatura/assinatura.component';
 
 registerLocaleData(localePt);
 
@@ -57,7 +58,8 @@ registerLocaleData(localePt);
     ProductDeleteComponent,
     AlunoCreateComponent,
     AlunoCrudComponent,
-    VendaCrudComponent
+    VendaCrudComponent,
+    AssinaturaComponent
   ],
   imports: [
     BrowserModule,
