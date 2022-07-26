@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Product, Total } from './../product.model';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
@@ -19,21 +20,34 @@ export class ProductReadComponent implements OnInit {
   total: number = 0;
   offset: number = 0;
 
-  constructor(private productService: ProductService) { }
+  formGroupPesquisa: FormGroup;
+
+  constructor(private productService: ProductService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void { 
+    this.formGroupPesquisa = this.formBuilder.group({
+      "nome":[null],
+    });
     this.totalProdutos(),
+    this.listarProdutos();
+  }
+
+  limparPesquisa(){
+    this.formGroupPesquisa.reset();
     this.listarProdutos();
   }
 
   listarProdutos(){
 
-    let queryAdicional;
+    const queryAdicional = new Map();
+    if (this.formGroupPesquisa.value.nome){
+      queryAdicional.set("nome", this.formGroupPesquisa.value.nome);
+    }
     this.productService.read(
       new PageRequest(
         {
           pageNumber: this.pageEvent? this.pageEvent.pageIndex:0,
-          pageSize: this.pageEvent? this.pageEvent.pageSize:5
+          pageSize: this.pageEvent? this.pageEvent.pageSize:0
         },
         {
           property: this.sortEvent ? this.sortEvent.active : "codigo_barras",

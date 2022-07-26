@@ -1,4 +1,13 @@
 <div class="mat-elevation-z8">
+    <form [formGroup]="formGroupPesquisa" (ngSubmit)="formGroupPesquisa.valid && listarProdutos()">
+        
+        <mat-form-field>
+            <input matInput placeholder="Nome" formControlName="nome" autocomplete="off" />
+        </mat-form-field>
+            <button mat-raised-button color="primary">Pesquisar</button>
+            <button mat-raised-button type="button" color="secondary" (click)="limparPesquisa()">Limpar</button>
+     
+        </form>
     <table mat-table [dataSource]="page.content" matSort (matSortChange)="sortEvent = $event; listarProdutos();">
         <!-- Id Column -->
         <ng-container matColumnDef="codigo_barras">
